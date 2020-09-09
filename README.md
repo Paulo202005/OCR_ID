@@ -1,5 +1,5 @@
 # OCR_ID
-Extração de dados através OCR Imagens (RPA - UiPatch)
+Extração de dados através OCR Imagens (RPA - UiPath)
 Material utilizado (arquivos imagen/excel e a aplicação Identidade.exe) na imersão realizada pela empresa [Desafios RPA](https://desafiosrpa.com.br/) para os inscritos no curso.
 
 ## Descrição do Projeto
