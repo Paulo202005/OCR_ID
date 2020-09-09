@@ -1,0 +1,326 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ID_Extrai_Dados" this:ID_Extrai_Dados.in_Arquivo="ID*.png" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Arquivo" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>908,2067</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ID_Extrai_Dados_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="48">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ID_Extrai_Dados" sap:VirtualizedContainerService.HintSize="918,1902" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="numeroID" />
+      <Variable x:TypeArguments="x:String" Name="nomeCompleto" />
+      <Variable x:TypeArguments="x:String" Name="dataNascimento" />
+      <Variable x:TypeArguments="sd1:DataTable" Name="dataTable" />
+      <Variable x:TypeArguments="x:String" Default="PROFISSIONAL" Name="tipoDocumento" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base ID" sap:VirtualizedContainerService.HintSize="876,260" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
+      <ui:AnchorBase.Action>
+        <ActivityAction x:TypeArguments="ui:Anchor">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+          </ActivityAction.Argument>
+          <ui:GetOCRText WordsInfo="{x:Null}" DisplayName="Get OCR Text 'Photos_PhotoCanvas'" sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetOCRText_2">
+            <ui:GetOCRText.OCREngine>
+              <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+                <ActivityFunc.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                </ActivityFunc.Argument>
+                <ui:GoogleOCR AllowedCharacters="{x:Null}" DeniedCharacters="{x:Null}" FilterRegion="{x:Null}" Invert="{x:Null}" Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ComputeSkewAngle="False" DisplayName="Tesseract OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GoogleOCR_2" Image="[Image]" />
+              </ActivityFunc>
+            </ui:GetOCRText.OCREngine>
+            <ui:GetOCRText.Target>
+              <ui:Target Element="{x:Null}" Id="c21860cb-c58c-429a-98cc-3a8b9f5cbc2e" InformativeScreenshot="12840d1f1df1812be50a21dab8d90c37" Selector="&lt;wnd cls='Photos_PhotoCanvas' /&gt;">
+                <ui:Target.ClippingRegion>
+                  <ui:Region Rectangle="650, 272, 175, 43" />
+                </ui:Target.ClippingRegion>
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:GetOCRText.Target>
+            <ui:GetOCRText.Text>
+              <OutArgument x:TypeArguments="x:String">[numeroID]</OutArgument>
+            </ui:GetOCRText.Text>
+          </ui:GetOCRText>
+        </ActivityAction>
+      </ui:AnchorBase.Action>
+      <ui:AnchorBase.AnchorProvider>
+        <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'Photos_PhotoCanvas'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+          <ui:WaitUiElementAppear.Target>
+            <ui:Target Element="{x:Null}" Id="e2790046-4a74-4be2-bafa-72e25ee9e917" InformativeScreenshot="3b814239b49924e075b84a3a0ce79ea4" Selector="&lt;wnd app='dllhost.exe' cls='Photo_Lightweight_Viewer' title='{{in_Arquivo}} - Visualizador de Fotos do Windows' /&gt;&lt;wnd cls='Photos_PhotoCanvas' /&gt;">
+              <ui:Target.ClippingRegion>
+                <ui:Region Rectangle="599, 271, 55, 53" />
+              </ui:Target.ClippingRegion>
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:WaitUiElementAppear.Target>
+        </ui:WaitUiElementAppear>
+      </ui:AnchorBase.AnchorProvider>
+    </ui:AnchorBase>
+    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base Nome" sap:VirtualizedContainerService.HintSize="876,260" sap2010:WorkflowViewState.IdRef="AnchorBase_2">
+      <ui:AnchorBase.Action>
+        <ActivityAction x:TypeArguments="ui:Anchor">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+          </ActivityAction.Argument>
+          <ui:GetOCRText WordsInfo="{x:Null}" DisplayName="Get OCR Text 'Photos_PhotoCanvas'" sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetOCRText_3">
+            <ui:GetOCRText.OCREngine>
+              <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+                <ActivityFunc.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                </ActivityFunc.Argument>
+                <ui:GoogleOCR AllowedCharacters="{x:Null}" DeniedCharacters="{x:Null}" FilterRegion="{x:Null}" Invert="{x:Null}" Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ComputeSkewAngle="False" DisplayName="Tesseract OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GoogleOCR_3" Image="[Image]" />
+              </ActivityFunc>
+            </ui:GetOCRText.OCREngine>
+            <ui:GetOCRText.Target>
+              <ui:Target Element="{x:Null}" Id="c591d02a-6c3d-4796-9ee3-f274aee6f9ce" InformativeScreenshot="8fcd8e7209a52888ec7ea8160a74744e" Selector="&lt;wnd cls='Photos_PhotoCanvas' /&gt;">
+                <ui:Target.ClippingRegion>
+                  <ui:Region Rectangle="711, 323, 239, 39" />
+                </ui:Target.ClippingRegion>
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:GetOCRText.Target>
+            <ui:GetOCRText.Text>
+              <OutArgument x:TypeArguments="x:String">[nomeCompleto]</OutArgument>
+            </ui:GetOCRText.Text>
+          </ui:GetOCRText>
+        </ActivityAction>
+      </ui:AnchorBase.Action>
+      <ui:AnchorBase.AnchorProvider>
+        <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'Photos_PhotoCanvas'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_3">
+          <ui:WaitUiElementAppear.Target>
+            <ui:Target Element="{x:Null}" Id="3c66a7a6-4991-492a-a911-e0fb2be4c235" InformativeScreenshot="8e8b7bac8e29e1d459337eef9863c946" Selector="&lt;wnd app='dllhost.exe' cls='Photo_Lightweight_Viewer' title='{{in_Arquivo}} - Visualizador de Fotos do Windows' /&gt;&lt;wnd cls='Photos_PhotoCanvas' /&gt;">
+              <ui:Target.ClippingRegion>
+                <ui:Region Rectangle="600, 321, 113, 46" />
+              </ui:Target.ClippingRegion>
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:WaitUiElementAppear.Target>
+        </ui:WaitUiElementAppear>
+      </ui:AnchorBase.AnchorProvider>
+    </ui:AnchorBase>
+    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base Data Nascimento" sap:VirtualizedContainerService.HintSize="876,260" sap2010:WorkflowViewState.IdRef="AnchorBase_3">
+      <ui:AnchorBase.Action>
+        <ActivityAction x:TypeArguments="ui:Anchor">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+          </ActivityAction.Argument>
+          <ui:GetOCRText WordsInfo="{x:Null}" DisplayName="Get OCR Text 'Photos_PhotoCanvas'" sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetOCRText_4">
+            <ui:GetOCRText.OCREngine>
+              <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+                <ActivityFunc.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                </ActivityFunc.Argument>
+                <ui:GoogleOCR AllowedCharacters="{x:Null}" DeniedCharacters="{x:Null}" FilterRegion="{x:Null}" Invert="{x:Null}" Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ComputeSkewAngle="False" DisplayName="Tesseract OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GoogleOCR_4" Image="[Image]" />
+              </ActivityFunc>
+            </ui:GetOCRText.OCREngine>
+            <ui:GetOCRText.Target>
+              <ui:Target Element="{x:Null}" Id="4a591f9f-3ab8-4205-ba6f-d6d5963efd8c" InformativeScreenshot="5b74c6cb3adec9f235091dc6d8b1d014" Selector="&lt;wnd cls='Photos_PhotoCanvas' /&gt;">
+                <ui:Target.ClippingRegion>
+                  <ui:Region Rectangle="705, 363, 192, 42" />
+                </ui:Target.ClippingRegion>
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:GetOCRText.Target>
+            <ui:GetOCRText.Text>
+              <OutArgument x:TypeArguments="x:String">[dataNascimento]</OutArgument>
+            </ui:GetOCRText.Text>
+          </ui:GetOCRText>
+        </ActivityAction>
+      </ui:AnchorBase.Action>
+      <ui:AnchorBase.AnchorProvider>
+        <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'Photos_PhotoCanvas'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_4">
+          <ui:WaitUiElementAppear.Target>
+            <ui:Target Element="{x:Null}" Id="e42f1b46-716a-49c8-b951-3bfb38ea0199" InformativeScreenshot="557389873c425b7f70f5d719e6eb77a4" Selector="&lt;wnd app='dllhost.exe' cls='Photo_Lightweight_Viewer' title='{{in_Arquivo}} - Visualizador de Fotos do Windows' /&gt;&lt;wnd cls='Photos_PhotoCanvas' /&gt;">
+              <ui:Target.ClippingRegion>
+                <ui:Region Rectangle="602, 362, 105, 46" />
+              </ui:Target.ClippingRegion>
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:WaitUiElementAppear.Target>
+        </ui:WaitUiElementAppear>
+      </ui:AnchorBase.AnchorProvider>
+    </ui:AnchorBase>
+    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base Tipo Documento" sap:VirtualizedContainerService.HintSize="876,260" sap2010:WorkflowViewState.IdRef="AnchorBase_4">
+      <ui:AnchorBase.Action>
+        <ActivityAction x:TypeArguments="ui:Anchor">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+          </ActivityAction.Argument>
+          <ui:GetOCRText WordsInfo="{x:Null}" DisplayName="Get OCR Text 'Photos_PhotoCanvas'" sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetOCRText_7">
+            <ui:GetOCRText.OCREngine>
+              <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+                <ActivityFunc.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                </ActivityFunc.Argument>
+                <ui:GoogleOCR AllowedCharacters="{x:Null}" DeniedCharacters="{x:Null}" FilterRegion="{x:Null}" Invert="{x:Null}" Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ComputeSkewAngle="False" DisplayName="Tesseract OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GoogleOCR_7" Image="[Image]" />
+              </ActivityFunc>
+            </ui:GetOCRText.OCREngine>
+            <ui:GetOCRText.Target>
+              <ui:Target Element="{x:Null}" Id="b35f1bbc-6aee-48ed-aa94-ed820f24e8fa" InformativeScreenshot="137bba20bca09a04ab4ff0fd27eff8c0" Selector="&lt;wnd cls='Photos_PhotoCanvas' /&gt;">
+                <ui:Target.ClippingRegion>
+                  <ui:Region Rectangle="731, 111, 325, 51" />
+                </ui:Target.ClippingRegion>
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:GetOCRText.Target>
+            <ui:GetOCRText.Text>
+              <OutArgument x:TypeArguments="x:String">[tipoDocumento]</OutArgument>
+            </ui:GetOCRText.Text>
+          </ui:GetOCRText>
+        </ActivityAction>
+      </ui:AnchorBase.Action>
+      <ui:AnchorBase.AnchorProvider>
+        <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'Photos_PhotoCanvas'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_5">
+          <ui:WaitUiElementAppear.Target>
+            <ui:Target Element="{x:Null}" Id="62394fd8-24d7-44c1-a484-842381b56df1" InformativeScreenshot="c902a34bee525b9cc979453b8f85ef2c" Selector="&lt;wnd app='dllhost.exe' cls='Photo_Lightweight_Viewer' title='{{in_Arquivo}} - Visualizador de Fotos do Windows' /&gt;&lt;wnd cls='Photos_PhotoCanvas' /&gt;">
+              <ui:Target.ClippingRegion>
+                <ui:Region Rectangle="473, 116, 256, 36" />
+              </ui:Target.ClippingRegion>
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:WaitUiElementAppear.Target>
+        </ui:WaitUiElementAppear>
+      </ui:AnchorBase.AnchorProvider>
+    </ui:AnchorBase>
+    <If Condition="[tipoDocumento = &quot;PE‘S‘SOAL&quot;]" sap:VirtualizedContainerService.HintSize="876,356" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[tipoDocumento]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">PESSOAL</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+      <If.Else>
+        <If Condition="[tipoDocumento = &quot;PROF‘ISS‘IONAL&quot;]" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_1">
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[tipoDocumento]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">PROFISSIONAL</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+          <If.Else>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[tipoDocumento]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">ESTUDANTIL</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Else>
+        </If>
+      </If.Else>
+    </If>
+    <ui:GenerateDataTable ColumnSizes="{x:Null}" NewLineSeparator="{x:Null}" Positions="{x:Null}" ColumnSeparators="," DataTable="[dataTable]" DisplayName="Gerar Tabela de Dados" sap:VirtualizedContainerService.HintSize="876,59" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="[numeroID + &quot;,&quot; + nomeCompleto + &quot;,&quot; + dataNascimento]" />
+    <ui:AppendRange DataTable="[dataTable]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="876,115" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="[tipoDocumento]" WorkbookPath="Registro\Registro.xlsx" />
+  </Sequence>
+</Activity>
